@@ -238,7 +238,13 @@ rgba(32, 144, 249, 0.423)
 .knowledge__picture{
     max-width: 550px;
     position: absolute;
-    margin-left: 700px;
+    margin-left: 630px;
+}
+
+.audio{
+    position: absolute;
+    margin-left: 800px;
+    margin-top: 430px;
 }
 
 .knowledge__paragraph{
