@@ -1,0 +1,140 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.logobis {
+    position: absolute;
+    top: 10px;
+    right: 1300px;
+    width: 140px; 
+    height: 200px; 
+    overflow: hidden;
+}
+
+.logobis img {
+    width: 100%;
+    height: auto;
+}
+/*#2091F9*/
+.barra-superior {
+    background-color: #ffffff; /* Color de fondo de la barra superior */
+    height: 100px; /* Altura de la barra superior */
+    width: 100%; /* Ancho completo de la página */
+    position: absolute; /* Fijar la barra en la parte superior de la página */
+    top: 0; /* Colocar la barra en la parte superior de la página */
+    z-index: -1; /* Asegurar que la barra esté por encima del resto del contenido */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: var(--padding-container);
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    max-height: 800px;
+    position: relative;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    color: #fff;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, #0000008c 0%, #0000008c 100%), url('../images/c.jpg');
+    opacity: 95%;
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 95%, 0 80%);
+    z-index: -1;
+}
+
+.nav {
+    --padding-container: 0;
+    height: 100%;
+    display: flex;
+    justify-content: 10em;    
+    align-items: center;
+}
+
+.nav__title {
+    font-weight: 300;
+}
+
+.nav__link {
+    margin-left: auto;
+    padding: 100;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    gap: 2em;
+}
+
+.nav__items {
+    list-style: none;
+}
+
+.nav__links {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+
+}
+
+.nav__menu {
+    margin-left: auto;
+    cursor: pointer;
+    display: none;
+}
+
+.nav__img {
+    display: block;
+    width: 30px;
+}
+
+
+.nav__close {
+    display: var(--show, none);
+}
+
+.hero__container {
+    max-width: 800px;
+    --padding-container: 0;
+    display: grid;
+    grid-auto-rows: max-content;
+    align-content: center;
+    gap: 1em;
+    padding-top: 50px;
+    text-align: center;
+    position: relative; /* Asegurar que el menú esté posicionado relativo a su contenedor */
+    z-index: 0; /* Asegurar que el menú esté por encima de la barra superior */
+
+}
+
+.hero__title {
+    font-size: 3rem;
+}
+
+.hero__paragraph {
+    margin-bottom: 20px;
+}
+
+.cta {
+    display: inline-block;
+    background-color: #2091F9;
+    justify-self: center;
+    color: #fff;
+    text-decoration: none;
+    padding: 13px 30px;
+    border-radius: 32px;
+}
