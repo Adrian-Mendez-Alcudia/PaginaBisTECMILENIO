@@ -70,7 +70,7 @@ padding: 20px;
 .company-description{
     position: static;
     margin-top: -100px;
-    margin-bottom: 0px;
+    margin-bottom: -50px;
     background-color: #ffffff;
     min-height: 550px;  
     z-index: -2;
