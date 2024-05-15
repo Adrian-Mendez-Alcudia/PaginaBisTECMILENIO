@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/contacto.css">
     <meta name="theme-color" content="#2091F9">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlwAleH_vhOVCRJzkPq4gTkQL6uW1lxEg&callback=initMap"
-    async defer></script>
+
     <style>
         #map {
-            height: 400px;
-            width: 100%;
+            width: 1470px;
+            height: 550px;
+            position: relative;
+            top: 0px;
+            left: 0px;
         }
     </style>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi272s9-U_JwhGz4wiSSg1MdTNkK168Do&callback=initMap" async defer></script>
 </head>
 
 <body>
@@ -78,43 +80,52 @@
     </main>
     <div id="map"></div>
     <script>
-        function initMap() {
-            // Intenta obtener la ubicación del usuario
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else { 
-                alert("La geolocalización no es soportada por este navegador.");
-            }
-        }
 
-        function showPosition(position) {
-            var location = { lat: position.coords.latitude, lng: position.coords.longitude };
-            var map = new google.maps.Map(document.getElementById('map'), {
+function initMap() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var location = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            var mapOptions = {
                 zoom: 15,
                 center: location
-            });
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
             var marker = new google.maps.Marker({
                 position: location,
                 map: map
             });
-        }
+        }, function() {
+            handleLocationError(true, map, map.getCenter());
+        });
+    } else {
+        handleLocationError(false, map, map.getCenter());
+    }
+}
 
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("Usuario denegó la solicitud de geolocalización.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("Información de ubicación no disponible.");
-                    break;
-                case error.TIMEOUT:
-                    alert("La solicitud para obtener la ubicación del usuario expiró.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("Un error desconocido ocurrió.");
-                    break;
-            }
-        }
+function handleLocationError(browserHasGeolocation, map, pos) {
+    var errorInfo = browserHasGeolocation ?
+        'Error: El servicio de Geolocalización falló.' :
+        'Error: Tu navegador no soporta geolocalización.';
+    console.error(errorInfo);
+}
+
+function resizeMap(width, height) {
+    var mapContainer = document.getElementById('map');
+    mapContainer.style.width = width + 'px';
+    mapContainer.style.height = height + 'px';
+}
+
+function moveMap(x, y) {
+    var mapContainer = document.getElementById('map');
+    mapContainer.style.left = x + 'px';
+    mapContainer.style.top = y + 'px';
+}
     </script>
 
     <footer class="footer">
@@ -157,8 +168,6 @@
             <h3 class="footer__copyright">Derechos reservados &copy; Adrian Mendez Alcudia</h3>
         </section>
     </footer>
-
-    <script src="./js/menu.js"></script>
 </body>
 
 </html>
